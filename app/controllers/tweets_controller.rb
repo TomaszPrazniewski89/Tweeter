@@ -6,6 +6,7 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.order(created_at: :DESC).all
     @tweet=Tweet.new
+    @tweetNumber=Tweet.where("user_id =?", current_user.id).count
   end
 
   # GET /tweets/1 or /tweets/1.json

@@ -4,7 +4,6 @@
 <div class="row">
 
   <div class="col-md-3">
-    <%= binding.pry %>
     <table>
       <tbody>
 
@@ -15,7 +14,7 @@
       <td>Followers</td>
     </tr>
     <tr>
-      <td><%=Tweet.where("user_id =?", current_user.id).count %></td>
+      <td><%=@tweetNumber %></td>
       <td>1222</td>
       <td>1555</td>
     </tr>
