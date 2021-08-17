@@ -23,10 +23,16 @@
   <tbody>
     <% @tweets.each do |tweet| %>
       <tr>
+        <tr>
+          <td>created by:<strong><%= current_user.name %></strong></td>
+
+        </tr>
         <td><%= tweet.tweet %></td>
+        <% if(current_user.id==tweet.user_id) %>
         <td><%= link_to 'Show', tweet %></td>
         <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
         <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end%>
       </tr>
     <% end %>
   </tbody>
@@ -34,7 +40,7 @@
 
 <br>
 
-<%# <%= link_to 'New Tweet', new_tweet_path %> 
+<%# <%= link_to 'New Tweet', new_tweet_path %>
 </div>
 
 
