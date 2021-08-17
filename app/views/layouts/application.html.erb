@@ -11,8 +11,53 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <div class="container">
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= link_to 'Tweeter',root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+
+
+        <li class="nav-item">
+        <%= link_to 'New Tweet',new_tweet_path, class: "nav-link active" %>
+        </li>
+
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Sign Out", destroy_user_session_path, :method => 'delete', class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to current_user[:name], edit_user_registration_path, class: "nav-link active" %>
+        </li>
+        <% else %>
+        <li class="nav-item active">
+          <%= link_to 'Sign UP',new_user_registration_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Sign in',new_user_session_path, class: "nav-link active" %>
+        </li>
+        <% end %>
+
+
+      </ul>
+
+    </div>
+  </nav>
+
+
+  </div>
+
+
+
+          <%= yield %>
+
+
+
+
   </body>
 </html>
